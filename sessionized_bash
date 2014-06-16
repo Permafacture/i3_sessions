@@ -1,0 +1,13 @@
+#!/bin/bash
+#start a program from a sessionized shell
+# usage: bashrc ipython
+
+
+. "$HOME/utils/sessions/sessionvar.sh"
+. "$HOME/.bashrc"
+export HISTFILE="$PATHTOSESSION/bash_history"
+. "$PATHTOSESSION/bashsession"
+
+echo "Session: $PATHTOSESSION"
+#execute anything that was passed
+$@

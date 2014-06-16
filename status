@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# shell script to prepend i3status with more stuff
+session_name='None'
+
+function session {
+  #import PATHTOSESSION
+  . "$HOME/utils/sessions/sessionvar.sh"
+
+  #name of session is the last directory in PATHTOSESSION
+  arrPTH=(${PATHTOSESSION//// })
+  len=${#arrPTH[@]}
+  last="$((len - 1))"
+  session_name=${arrPTH[$last]}
+  }
+
+i3status | while :
+  do
+    session
+    read line
+    echo "session: $session_name | $line" || exit 1
+  done
+
+

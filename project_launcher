@@ -1,0 +1,43 @@
+#!/usr/bin/python
+'''
+Pipe available sessions into dmenu
+
+The selected session is exported as PATHTOSESSION
+  which is stored in ./sessions/sessionvar.sh
+  this variable is used by wrapper scripts in ./sessions/
+  to start the shell, vim or whatever else.
+'''
+
+import os
+from subprocess import Popen, PIPE, STDOUT
+
+project_dir = os.path.expanduser('~/utils/sessions')
+proj_paths = {}
+
+#customize dmenu as you see fit
+DMENU_COMMAND = ['dmenu',
+
+    '-p',  'session:',
+    '-nb', '#151515',
+    '-nf', '#888888',
+    #'-l',  '10',
+    ]
+
+#every directory under ./sessions is a project/session
+projects = [x for x in os.listdir(project_dir) 
+              if os.path.isdir(os.path.join(project_dir,x))]
+
+for project in projects:
+    proj_path = os.path.abspath(os.path.join(project_dir,project))
+    proj_paths[project] = proj_path
+  
+
+#Now call dmenu
+process = Popen(DMENU_COMMAND, stdout=PIPE, 
+                  stdin=PIPE, stderr=STDOUT)
+#and pipe in the options
+selection=process.communicate(input='\n'.join(proj_paths.keys()))[0]
+
+#get selection and execute it:
+if selection.strip()!='':
+   os.system("echo 'export PATHTOSESSION=%s' > $HOME/utils/sessions/sessionvar.sh" % proj_paths[selection.strip()])

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#Load the current PATHTOSESSION variable
+. "$HOME/utils/sessions/sessionvar.sh"
+
+#start vim with session management
+vim -u $HOME/utils/sessions/vimrc

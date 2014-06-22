@@ -44,23 +44,28 @@ the session.
 change .i3/config 
 ------------------
 
-*launch a sessionless terminal*
+**launch a sessionless terminal**
+
     bindsym $mod+Return exec i3-sensible-terminal
 
-*launch the session chooser*
+**launch the session chooser**
+
     bindsym $mod+Ctrl+d exec project_launcher
 
-*sessionized_bash will execute whatever you give it as an argument*
+**sessionized_bash will execute whatever you give it as an argument**
+
     bindsym $mod+i exec i3-sensible-terminal -e bash -c "sessionized_bash ipython"
 
-*Vim requires a special envocation*
+**Vim requires a special envocation**
+
     bindsym $mod+u exec i3-sensible-terminal -e bash -c "vimstart"
 
-*When launching an interactive bash session, sessionized_bash is the rcfile*
+**When launching an interactive bash session, sessionized_bash is the rcfile**
+
     bindsym $mod+t exec i3-sensible-terminal -e bash --rcfile /usr/bin/sessionized_bash
 
-*keep track of current session on the status bar*
+**keep track of current session on the status bar**
 
-bar {
-        status_command i3status | ~/utils/sessions/jsonstatus.py
-}
+    bar {
+            status_command i3status | ~/utils/sessions/jsonstatus.py
+        }

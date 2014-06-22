@@ -8,8 +8,10 @@ Install
 
 Put all files in the folder $HOME/utils/sessions
 
-for x in [start_session, sessionized_bash, vimstart, project_launcer]:
- sudo ln -s $HOME/utils/sessions/x to /usr/bin/x
+    for x in [start_session, sessionized_bash, 
+                         vimstart, project_launcer]:
+
+        sudo ln -s $HOME/utils/sessions/x /usr/bin/x
  
 
 Sessions are saved as directories in $HOME/utils/sessions/

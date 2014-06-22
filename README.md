@@ -41,24 +41,26 @@ something after running the setup commands, so this
 repository will be cloned into the main directory of
 the session. 
 
-Integration
+change .i3/config 
 ------------------
 
-#launch a sessionless terminal
-bindsym $mod+Return exec i3-sensible-terminal
+*launch a sessionless terminal*
+    bindsym $mod+Return exec i3-sensible-terminal
 
-#launch the session chooser
-bindsym $mod+Ctrl+d exec project_launcher
+*launch the session chooser*
+    bindsym $mod+Ctrl+d exec project_launcher
 
-#sessionized_bash will execute whatever you give it as an argument
-bindsym $mod+i exec i3-sensible-terminal -e bash -c "sessionized_bash ipython"
+*sessionized_bash will execute whatever you give it as an argument*
+    bindsym $mod+i exec i3-sensible-terminal -e bash -c "sessionized_bash ipython"
 
-#Vim requires a special envocation
-bindsym $mod+u exec i3-sensible-terminal -e bash -c "vimstart"
+*Vim requires a special envocation*
+    bindsym $mod+u exec i3-sensible-terminal -e bash -c "vimstart"
 
-#When launching an interactive bash session, sessionized_bash is the rcfile
-bindsym $mod+t exec i3-sensible-terminal -e bash --rcfile /usr/bin/sessionized_bash
+*When launching an interactive bash session, sessionized_bash is the rcfile*
+    bindsym $mod+t exec i3-sensible-terminal -e bash --rcfile /usr/bin/sessionized_bash
 
-sessions/status can replace i3status, and adds 
-"session: curretn_session" to the status bar
-however, it strips out the purty colors...
+*keep track of current session on the status bar*
+
+bar {
+        status_command i3status | ~/utils/sessions/jsonstatus.py
+}

@@ -5,16 +5,14 @@ projects, and loading them through i3 hotkeys, dmenu, etc.
 
 Install
 -----------------
+Note: Sessions are saved as directories in $HOME/utils/sessions/
 
 Put all files in the folder $HOME/utils/sessions
 
-    for x in [start_session, sessionized_bash, 
-                         vimstart, project_launcer]:
+Put executables in path.  Bash command to do so:
+  $ for x in start_session sessionized_bash vimstart project_launcher; do sudo ln -s $HOME/utils/sessions/$x /usr/bin/$x; done
+  ##TODO `chmod +x $x` also?
 
-        sudo ln -s $HOME/utils/sessions/x /usr/bin/x
- 
-
-Sessions are saved as directories in $HOME/utils/sessions/
 
 Usage
 -----------------

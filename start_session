@@ -6,7 +6,10 @@ if [ "$1" != '' ]; then
   new_dir="$HOME/utils/sessions/$1"
   mkdir $new_dir
   touch $new_dir/bash_history
-  echo -e "#!/bin/bash\n#cd $HOME/\n#source $HOME/code/env/bin/activate" > $new_dir/bashsession
+  echo -e "#!/bin/bash\n\
+#root=$HOME\n\
+#cd \$root/\n\
+#source \$root/bin/activate" > $new_dir/bashsession
   chmod +x $new_dir/bashsession
 
   vim $new_dir/bashsession
